@@ -17,16 +17,19 @@ class QuotationController extends Controller
         return view('quotation.list', compact('quotations'));
     }
 
-    public function create($CustomerId)
+    public function create($CustomerId, Request $request)
     {
         Log::info('Quotation create');
+
+        $referer = $request->headers->get('referer');
+        session(['previous_url' => $referer]);
         $customer = Customer::findOrFail($CustomerId);
      
         Log::info('Quotation create');
         return view('quotation.create', compact('customer'));
     }
 
-    public function store(Request $request)
+    public function store($CustomerId, Request $request)
     {
         Log::info('Quotation store');
 

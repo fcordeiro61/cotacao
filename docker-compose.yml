@@ -17,7 +17,8 @@ services:
     build:
       context: ./docker/php-dev
     ports:
-      - "5173:5173"      
+       - "5173:5173"      
+       - "${PHP_DEV_PORT}:8000"
     volumes:
       - ./:/home/dev
     env_file:
@@ -36,8 +37,8 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    ports:
-      - "${MYSQL_PORT}:3306"
+    # ports:
+    #   - "${MYSQL_PORT}:3306"
     volumes:
       - mysql_data:/var/lib/mysql  # Volume nomeado do Docker
       #- ~/docker/volumes/mysql:/var/lib/mysql # Bind mount no diretório local

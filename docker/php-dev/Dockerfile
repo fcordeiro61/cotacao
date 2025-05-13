@@ -47,4 +47,6 @@ WORKDIR /home/dev/app
 # Comando que será executado quando o container for iniciado
 #CMD ["php", "-a"]
 # Rodar o bash automaticamente quando o container for iniciado
+
+# CMD ["tail", "-f", "/dev/null"]
 CMD ["npm", "run", "dev"]

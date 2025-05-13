@@ -14,6 +14,7 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
+                'resources/js/scroll.js',
             ],
             refresh: true,
         }),
