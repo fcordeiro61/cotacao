@@ -8,7 +8,7 @@
     </x-dropdown-link>
 
     <x-dropdown-link :href="route('quotation.list')">
-        {{ __('Quotation') }}
+        {{ __('Quotations') }}
     </x-dropdown-link>
 
     <x-dropdown-link :href="route('user.list')">

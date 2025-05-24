@@ -14,8 +14,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-                // Chama o seeder da tabela 'role'
-                $this->call(RolesTableSeeder::class);
+        // Chama o seeder da tabela 'role'
+        $this->call(RolesTableSeeder::class);
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([

@@ -6,28 +6,26 @@
     <div class="list-header">
         <h3>{{ __('Quotation List') }}</h3>
 
-        <x-primary-button onclick="window.location='{{ route('quotation.create') }}'">
-            <i class="fas fa-file-alt"></i>&nbsp;{{ __('Nova Cotação') }}
-        </x-primary-button>
+
     </div>
 
     <div class="list-alert">
-        @if(session('success'))
+        @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
         @endif
 
-        @if(session('error'))
+        @if (session('error'))
             <div class="alert alert-danger">
                 {{ session('error') }}
             </div>
         @endif
 
-        @if($errors->any())
+        @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
-                    @foreach($errors->all() as $error)
+                    @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
                 </ul>
@@ -36,49 +34,39 @@
     </div>
 
     <div class="list-scroll">
-        @foreach($quotations as $quotation)
+        @foreach ($quotations as $quotation)
             <div class="list-card">
                 <div class="list-detail">
-                    @if($quotation->active)
-                    @else
-                        <div style="color: gray;">
-                    @endif
+                    {{-- Dados do cliente --}}
+                    <p><strong>Cliente:</strong>
+                        {{ $quotation->customer->name ?? 'N/A' }}</p>
+                    <p><strong>CPF:</strong> {{ $quotation->customer->cpf ?? 'N/A' }}
+                    </p>
+                    <p><strong>Telefone:</strong>
+                        {{ $quotation->customer->phone ?? 'N/A' }}</p>
+                    <p><strong>E-mail:</strong>
+                        {{ $quotation->customer->email ?? 'N/A' }}</p>
 
-                    <h4>{{ $quotation->title ?? 'No title' }}</h4>
-                    <p>Cliente: {{ $quotation->customer->name ?? 'N/A' }}</p>
-                    <p>Valor: R$ {{ number_format($quotation->value, 2, ',', '.') }}</p>
+                    {{-- Dados da cotação --}}
+                    <p><strong>Placa:</strong> {{ $quotation->vehicle_plate ?? 'N/A' }}
+                    </p>
+                    <p><strong>Marca:</strong> {{ $quotation->vehicle_brand ?? 'N/A' }}
+                    </p>
+                    <p><strong>Modelo:</strong> {{ $quotation->vehicle_model ?? 'N/A' }}
+                    </p>
+                    <p><strong>Ano:</strong> {{ $quotation->manufacture_year ?? 'N/A' }}
+                    </p>
+
+                    <!-- <p><strong>Valor:</strong> R$
+                        {{ number_format($quotation->value ?? 0, 2, ',', '.') }}
+                    </p> -->
+
                     <div class="list-actions">
-                        @if($quotation->active)
-                            <a href="{{ route('quotation.edit', $quotation->id) }}"
-                                class="btn-icon" title="Editar">
-                                <i class="fas fa-edit"></i>&nbsp;Editar
-                            </a>
-
-                        @endif
-
-                        @if($quotation->active)
-                            <form action="{{ route('quotation.deactivate', $quotation->id) }}"
-                                method="POST" style="display:inline;">
-                                @csrf
-                                <button type="submit" class="btn-icon"
-                                    title="Desativar">
-                                    <i class="fas fa-ban"></i>&nbsp;Desativar
-                                </button>
-                            </form>
-                        @else
-                            <form action="{{ route('quotation.activate', $quotation->id) }}"
-                                method="POST" style="display:inline;">
-                                @csrf
-                                <button type="submit" class="btn-icon"
-                                    title="Ativar">
-                                    <i class="fas fa-check-circle"></i>&nbsp;Ativar
-                                </button>
-                            </form>
-                        @endif
+                        <a href="{{ route('quotation.edit', $quotation->id) }}" class="btn-icon" title="Editar">
+                            <i class="fas fa-edit"></i>&nbsp;Editar
+                        </a>
                     </div>
-                    @if(!$quotation->active)
-                        </div>
-                    @endif
+
                 </div>
             </div>
         @endforeach

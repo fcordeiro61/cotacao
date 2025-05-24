@@ -64,7 +64,7 @@ class CustomerController extends Controller
         ]);
 
         Log::info($validated);
-        
+
         //dd($validated);
 
         Customer::create($validated);
@@ -102,12 +102,13 @@ class CustomerController extends Controller
      * @param  \App\Models\Customer  $customer
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         Log::info('customer update');
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             //'email' => 'required|email|unique:customers,email',
-            'email' => 'required|email|unique:customers,email,' . $id, 
+            'email' => 'required|email|unique:customers,email,' . $id,
             'is_foreign' => 'required|boolean',
             'cpf' => 'required_if:is_foreign,false', // |cpf
             'rnm' => 'required_if:is_foreign,true',
@@ -125,10 +126,10 @@ class CustomerController extends Controller
         //$user->name = $request->input('name');
 
         $customer->name = $request->input('name');
-        
-        $customer->email = $request->input('email'); 
+
+        $customer->email = $request->input('email');
         $customer->is_foreign = $request->input('is_foreign');
-        $customer->cpf = $request->input('cpf'); 
+        $customer->cpf = $request->input('cpf');
         $customer->rnm = $request->input('rnm');
         $customer->birth_date = $request->input('birth_date');
         $customer->zip_code = $request->input('zip_code');
@@ -143,7 +144,7 @@ class CustomerController extends Controller
 
         return redirect()->route('customer.list')->with('success', 'Cliente atualizado com sucesso!');
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *
@@ -161,9 +162,9 @@ class CustomerController extends Controller
         $customer = Customer::findOrFail($id);
         $customer->active = false;
         $customer->save();
-    
+
         return redirect()->route('customer.list')->with('success', 'Usuário desativado com sucesso!');
-    }   
+    }
 
     public function activate($id)
     {
@@ -171,6 +172,6 @@ class CustomerController extends Controller
         $customer->active = true;
         $customer->save();
 
-        return redirect()->route('customer.list')->with('success', 'Usuário reativado com sucesso!');    
+        return redirect()->route('customer.list')->with('success', 'Usuário reativado com sucesso!');
     }
 }

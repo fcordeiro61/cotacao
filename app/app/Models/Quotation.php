@@ -15,4 +15,9 @@ class quotation extends Model
         'uso_veiculo' => 'array',
         'cobertura' => 'array',
     ];
+
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'customer_id', 'id');
+    }
 }

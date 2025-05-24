@@ -24,6 +24,7 @@ WORKDIR /home/dev
 
 RUN apt-get update && apt-get install -y \
     curl \
+    wget \
     git \
     unzip \
     libpng-dev \
@@ -39,6 +40,10 @@ RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
 
 # Instalar o Composer globalmente
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Baixa o php-cs-fixer e torna executável
+RUN wget https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/latest/download/php-cs-fixer.phar -O /usr/local/bin/php-cs-fixer \
+    && chmod +x /usr/local/bin/php-cs-fixer
 
 WORKDIR /home/dev/app
 # Definir o diretório de trabalho dentro do container

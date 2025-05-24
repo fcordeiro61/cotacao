@@ -141,7 +141,7 @@ return [
     'ulid' => ':attribute deve conter um ULID válido.',
     'uuid' => ':attribute deve conter um UUID válido.',
 
-    
+
     'attributes' => [
     'name' => 'Nome',
     'email' => 'E-mail',

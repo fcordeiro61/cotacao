@@ -26,7 +26,7 @@ class UserController extends Controller
         Log::info('user create');
         $roles = Role::all(); // Buscando todos os perfis
         return view('user.create', compact('roles'));
-    }  
+    }
 
     public function store(Request $request)
     {
@@ -45,7 +45,7 @@ class UserController extends Controller
             'role_id' => $request->role_id,
         ]);
 
-         // Atribuindo o perfil ao usuário
+        // Atribuindo o perfil ao usuário
         //$user->role_id = $request->role_id; // Atualiza o perfil
 
         return redirect()->route('user.list')->with('success', 'Usuário criado com sucesso!');
@@ -63,7 +63,8 @@ class UserController extends Controller
         return view('user.edit', compact('user', 'roles'));
     }
 
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         Log::info('user update');
 
         $request->validate([
@@ -76,16 +77,16 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->name = $request->input('name');
         $user->email = $request->input('email');
-    // Se a senha foi preenchida, atualize-a
-    if ($request->filled('password')) {
-        $user->password = bcrypt($request->password);
-    }
+        // Se a senha foi preenchida, atualize-a
+        if ($request->filled('password')) {
+            $user->password = bcrypt($request->password);
+        }
 
-    $user->role_id = $request->role_id; // Atualiza o perfil
-    $user->save();
+        $user->role_id = $request->role_id; // Atualiza o perfil
+        $user->save();
         return redirect()->route('user.list')->with('success', 'Usuário atualizado!');
     }
-    
+
     public function delete($id)
     {
         $user = User::findOrFail($id);
@@ -100,9 +101,9 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->active = false;
         $user->save();
-    
+
         return redirect()->route('user.list')->with('success', 'Usuário desativado com sucesso!');
-    }   
+    }
 
     public function activate($id)
     {
