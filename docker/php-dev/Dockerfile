@@ -54,4 +54,6 @@ WORKDIR /home/dev/app
 # Rodar o bash automaticamente quando o container for iniciado
 
 # CMD ["tail", "-f", "/dev/null"]
-CMD ["npm", "run", "dev"]
+# CMD ["npm", "run", "dev"]
+# ENTRYPOINT ["tail", "-f", "/dev/null"]
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
