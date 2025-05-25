@@ -16,6 +16,7 @@ services:
       context: ./docker/php-dev
     ports:
        - "${PHP_DEV_PORT}:8000"
+       - "5173:5173"
     volumes:
       - ./:/home/dev
     env_file:
