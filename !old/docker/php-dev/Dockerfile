@@ -4,7 +4,7 @@ FROM php:8.0-cli
 # Instala extensões necessárias do PHP
 RUN docker-php-ext-install mysqli pdo pdo_mysql && docker-php-ext-enable mysqli
 
-WORKDIR /home/dev
+# WORKDIR /home/dev
 
 # Instalar dependências necessárias para o Composer
 # RUN apt-get update && apt-get install -y \
@@ -45,7 +45,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN wget https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/latest/download/php-cs-fixer.phar -O /usr/local/bin/php-cs-fixer \
     && chmod +x /usr/local/bin/php-cs-fixer
 
-WORKDIR /home/dev/app
+WORKDIR /home/dev/cotacao_app
 # Definir o diretório de trabalho dentro do container
 
 
@@ -53,6 +53,13 @@ WORKDIR /home/dev/app
 #CMD ["php", "-a"]
 # Rodar o bash automaticamente quando o container for iniciado
 
+<<<<<<< HEAD:!old/docker/php-dev/Dockerfile
 CMD ["tail", "-f", "/dev/null"]
 
 #CMD ["npm", "run", "dev"]
+=======
+# CMD ["tail", "-f", "/dev/null"]
+# CMD ["npm", "run", "dev"]
+# ENTRYPOINT ["tail", "-f", "/dev/null"]
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
+>>>>>>> w0513:docker/php-dev/Dockerfile
