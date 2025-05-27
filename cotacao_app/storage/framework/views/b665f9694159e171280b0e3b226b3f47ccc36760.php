@@ -9,7 +9,7 @@
     <title><?php echo $__env->yieldContent('title', config('app.name', 'Laravel')); ?></title>
 
 
-    <link rel="icon" href="<?php echo e(asset('assets/img/favicon.ico')); ?>" type="image/x-icon">
+    <link rel="icon" href="<?php echo e(asset('assets/favicon.ico')); ?>" type="image/x-icon">
 
 
     <!-- Fonts -->
