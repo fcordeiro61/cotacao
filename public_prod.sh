@@ -1,13 +1,18 @@
 !/bin/bash
 echo "Iniciando publicação do branch prod..."
 
+set -e
 # Garante que master esteja atualizada (opcional)
 # git checkout master
 # git pull origin master
 
 # Força prod a ser igual ao master
 git checkout prod
-exit 0
+
+echo "Branch 'prod' verificada com sucesso."
+
+# Caso o checkout tenha falhado, o script já terá parado aqui
+
 
 git reset --hard master
 
