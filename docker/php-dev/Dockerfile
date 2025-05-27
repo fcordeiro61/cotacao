@@ -46,14 +46,8 @@ RUN wget https://github.com/FriendsOfPHP/PHP-CS-Fixer/releases/latest/download/p
     && chmod +x /usr/local/bin/php-cs-fixer
 
 WORKDIR /home/dev/cotacao_app
-# Definir o diretório de trabalho dentro do container
-
-
-# Comando que será executado quando o container for iniciado
-#CMD ["php", "-a"]
-# Rodar o bash automaticamente quando o container for iniciado
 
 # CMD ["tail", "-f", "/dev/null"]
 # CMD ["npm", "run", "dev"]
-# ENTRYPOINT ["tail", "-f", "/dev/null"]
+#ENTRYPOINT ["tail", "-f", "/dev/null"]
 CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]

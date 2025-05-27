@@ -18,18 +18,28 @@ use App\Http\Controllers\QuotationController;
 */
 
 Route::get('/env', function () {
-    return [
-        'default_connection' => config('database.default'),
-        APP_NAME="Grupo05 Seguros"
-APP_ENV=local
-APP_KEY=base64:AXTinEr9+Z7iyjm8ZSLVAT39L6mNrHdxNMsPHrDjFM0=
-APP_DEBUG=true
-APP_URL=http://localhost
+    $dados = [
+        'APP_NAME' => env('APP_NAME'),
+        'APP_ENV' => env('APP_ENV'),
+        'APP_DEBUG' => env('APP_DEBUG'),
+        'APP_URL' => env('APP_URL'),
+        'DB_CONNECTION' => env('DB_CONNECTION'),
+        'DB_HOST' => env('DB_HOST'),
+        'DB_DATABASE' => env('DB_DATABASE'),
+        'DB_USERNAME' => env('DB_USERNAME'),
         'default_connection' => config('database.default'),
         'host' => config('database.connections.' . config('database.default') . '.host'),
         'database' => config('database.connections.' . config('database.default') . '.database'),
         'username' => config('database.connections.' . config('database.default') . '.username'),
     ];
+
+    $texto = '';
+    foreach ($dados as $chave => $valor) {
+        $texto .= "$chave = $valor\n";
+    }
+
+    return response($texto, 200)
+        ->header('Content-Type', 'text/plain');
 });
 
 Route::get('/welcome', function () {
