@@ -17,6 +17,21 @@ use App\Http\Controllers\QuotationController;
 |
 */
 
+Route::get('/env', function () {
+    return [
+        'default_connection' => config('database.default'),
+        APP_NAME="Grupo05 Seguros"
+APP_ENV=local
+APP_KEY=base64:AXTinEr9+Z7iyjm8ZSLVAT39L6mNrHdxNMsPHrDjFM0=
+APP_DEBUG=true
+APP_URL=http://localhost
+        'default_connection' => config('database.default'),
+        'host' => config('database.connections.' . config('database.default') . '.host'),
+        'database' => config('database.connections.' . config('database.default') . '.database'),
+        'username' => config('database.connections.' . config('database.default') . '.username'),
+    ];
+});
+
 Route::get('/welcome', function () {
     return view('welcome');
 });
@@ -57,7 +72,6 @@ Route::middleware('auth')->group(function () {
     Route::put('/quotation/{id}', [QuotationController::class, 'update'])->name('quotation.update');
     Route::post('/quotation/{id}/deactivate', [QuotationController::class, 'deactivate'])->name('quotation.deactivate');
     Route::post('/quotation/{id}/activate', [QuotationController::class, 'activate'])->name('quotation.activate');
-
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
