@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 echo "Iniciando publicação do branch prod..."
 
 # Garante que master esteja atualizada (opcional)
@@ -7,6 +7,8 @@ echo "Iniciando publicação do branch prod..."
 
 # Força prod a ser igual ao master
 git checkout prod
+exit 0
+
 git reset --hard master
 
 git rm -r --cached docker
