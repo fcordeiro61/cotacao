@@ -1,11 +1,11 @@
 #!/bin/bash
 echo "Iniciando publicação do branch prod..."
 # 1. Atualiza master local e prod local
-git checkout master
-git pull origin master
+#git checkout master
+#git pull origin master
 
 git checkout prod
-git pull origin prod
+#git pull origin prod
 
 # 2. Atualiza prod com o conteúdo da master
 git merge master

@@ -5,7 +5,8 @@ use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
 
-$base_path = '~/prod/cotacao_app/public';
+$base_path = realpath(__DIR__) . '/../prod/cotacao_app/public';
+
 
 
 
