@@ -1,1 +1,5 @@
-cotacao_app/storage
+# Ignorar diretórios de cache, sessões e views do storage
+
+cotacao_app/storage/framework/cache/*
+cotacao_app/storage/framework/sessions/*
+cotacao_app/storage/framework/views/*
