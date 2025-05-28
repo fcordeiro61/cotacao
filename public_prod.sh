@@ -20,12 +20,13 @@ echo "Branch 'prod' verificada com sucesso."
 
 git reset --hard master
 
+set +e
 git rm -r --cached docker
 git rm -r --cached docker-compose.yml
 git rm -r --cached .env
 git rm -r --cached public_prod.sh
 git rm -r --cached .gitignore
-
+set -e
 
 git commit -m "Preparação de publicação - $(date '+%Y-%m-%d %H:%M:%S')"
 # Faz push forçado para o remoto
