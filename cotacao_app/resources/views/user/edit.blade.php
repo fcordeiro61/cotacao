@@ -57,7 +57,7 @@
 
 
 
-                    <x-button-cancel onclick="window.location='{{ route('customer.list') }}'">
+                    <x-button-cancel onclick="window.location='{{ route('user.list') }}'">
                         <i class="fa fa-arrow-left"></i>&nbsp;{{ __('Back') }}
                     </x-button-cancel>
 
