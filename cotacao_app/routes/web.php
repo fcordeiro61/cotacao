@@ -23,10 +23,16 @@ Route::get('/env', function () {
         'APP_ENV' => env('APP_ENV'),
         'APP_DEBUG' => env('APP_DEBUG'),
         'APP_URL' => env('APP_URL'),
+
         'DB_CONNECTION' => env('DB_CONNECTION'),
         'DB_HOST' => env('DB_HOST'),
         'DB_DATABASE' => env('DB_DATABASE'),
         'DB_USERNAME' => env('DB_USERNAME'),
+
+        'LOG_CHANNEL' => env('LOG_CHANNEL'),
+        'LOG_DEPRECATIONS_CHANNEL' => env('LOG_DEPRECATIONS_CHANNEL'),
+        'LOG_LEVEL' => env('LOG_LEVEL'),
+
         'default_connection' => config('database.default'),
         'host' => config('database.connections.' . config('database.default') . '.host'),
         'database' => config('database.connections.' . config('database.default') . '.database'),
